@@ -33,12 +33,12 @@
   }
 
   const urlMap: Record<OSOption, string> = {
-    Windows: '/testdocument.txt',
-    'Mac (M Series)': '/testdocument.txt',
-    'Mac (Intel)': '/testdocument.txt',
-    'Linux (x64)': '/testdocument.txt',
-    'Linux (x86)': '/testdocument.txt',
-    'Linux (arm64)': '/testdocument.txt',
+    Windows: '/testWindows.txt',
+    'Mac (M Series)': '/testMac.txt',
+    'Mac (Intel)': '/testMac.txt',
+    'Linux (x64)': '/testLinux.txt',
+    'Linux (x86)': '/testLinux.txt',
+    'Linux (arm64)': '/testLinux.txt',
   };
 
   let angle = 0;
