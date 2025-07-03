@@ -6,7 +6,7 @@
   let currentPage: 'download' | 'about' = 'download';
 </script>
 
-<main class="w-screen h-screen relative">
+<main class="w-screen h-screen relative min-h-[700px]">
   <!-- Background Layer -->
   <div class="absolute inset-0 z--10">
     <Background vigTrans={currentPage === 'download' ? 30 : 60} />

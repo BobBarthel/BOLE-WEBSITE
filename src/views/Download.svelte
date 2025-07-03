@@ -63,20 +63,17 @@
         `[gradient] frame: angle=${angle}°, found ${rainbows.length} .rainbow elements`
       );
 
-      rainbows.forEach((el, idx) => {
+      rainbows.forEach((el, _idx) => {
         el.style.setProperty('--angle', `${angle}deg`);
         const applied = getComputedStyle(el).getPropertyValue('--angle').trim();
-        console.log(`  → [el ${idx}] --angle = ${applied}`);
       });
 
       animationFrame = requestAnimationFrame(update);
     };
 
-    console.log('[gradient] Starting animation loop');
     update();
 
     return () => {
-      console.log('[gradient] Cancelling animation');
       cancelAnimationFrame(animationFrame);
     };
   });

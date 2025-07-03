@@ -14,20 +14,17 @@
         `[gradient] frame: angle=${angle}°, found ${rainbows.length} .rainbow elements`
       );
 
-      rainbows.forEach((el, idx) => {
+      rainbows.forEach((el, _idx) => {
         el.style.setProperty('--angle', `${angle}deg`);
         const applied = getComputedStyle(el).getPropertyValue('--angle').trim();
-        console.log(`  → [el ${idx}] --angle = ${applied}`);
       });
 
       animationFrame = requestAnimationFrame(update);
     };
 
-    console.log('[gradient] Starting animation loop');
     update();
 
     return () => {
-      console.log('[gradient] Cancelling animation');
       cancelAnimationFrame(animationFrame);
     };
   });
@@ -39,7 +36,7 @@
   out:fade={{ duration: 0 }}
 >
   <div
-    class="relative p-8 bg-black rounded-lg rainbow w-100 text-white flex flex-col"
+    class="relative p-8 bg-black rounded-lg rainbow w-80 sm:w-100 text-white flex flex-col"
     role="region"
     aria-labelledby="about-title"
   >
