@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Svelte + TS + Vite
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
@@ -43,9 +42,6 @@ If you have state that's important to retain within a component, consider creati
 ```ts
 // store.ts
 // An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+import { writable } from 'svelte/store';
+export default writable(0);
 ```
-=======
-# BOLE-WEBSITE
->>>>>>> 473a5d7278d8e2659be47a5fde007cb3904186a9
