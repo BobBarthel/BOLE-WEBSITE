@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Download, ChevronDown } from 'lucide-svelte';
+  import { Download, ChevronDown, ChevronUp } from 'lucide-svelte';
   import WindowsIcon from '../icons/WindowsIcon.svelte';
   import AppleIcon from '../icons/AppleIcon.svelte';
   import LinuxIcon from '../icons/LinuxIcon.svelte';
   import { onMount } from 'svelte';
-  import { fade, scale, slide } from 'svelte/transition';
+  import { crossfade, fade, scale, slide } from 'svelte/transition';
 
   type OSOption =
     | 'Windows'
@@ -55,27 +55,6 @@
     } else {
       selectedOS = 'Windows';
     }
-
-    const update = () => {
-      angle = (angle + 1) % 360;
-      const rainbows = document.querySelectorAll<HTMLElement>('.rainbow');
-      console.log(
-        `[gradient] frame: angle=${angle}°, found ${rainbows.length} .rainbow elements`
-      );
-
-      rainbows.forEach((el, _idx) => {
-        el.style.setProperty('--angle', `${angle}deg`);
-        const applied = getComputedStyle(el).getPropertyValue('--angle').trim();
-      });
-
-      animationFrame = requestAnimationFrame(update);
-    };
-
-    update();
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
   });
 
   $: downloadUrl = urlMap[selectedOS] ?? '';
@@ -83,7 +62,7 @@
 
 <div
   class="w-full h-full flex flex-col justify-center items-center z-20 gap-4 relative"
-  in:scale
+  in:fade={{ duration: 150 }}
   out:fade={{ duration: 0 }}
 >
   <a
@@ -107,24 +86,29 @@
   <!-- custom dropdown -->
   <div class="rainbow relative w-80">
     <!-- trigger button -->
-    <button
-      class="w-full bg-black text-white p-5 rounded-lg flex items-center gap-2 justify-between"
-      onclick={() => (isOpen = !isOpen)}
-    >
-      <div class="flex items-center gap-2">
-        <svelte:component
-          this={options.find((o) => o.label === selectedOS)?.icon}
-          className="w-4 h-4 shrink-0"
-        />
-        <span>{selectedOS}</span>
-      </div>
-      <ChevronDown class="w-4 h-4 shrink-0" />
-    </button>
+    <div class="">
+      <button
+        class="w-full bg-black text-white p-5 rounded-lg flex items-center gap-2 justify-between"
+        onclick={() => (isOpen = !isOpen)}
+      >
+        <div class="flex items-center gap-2">
+          <svelte:component
+            this={options.find((o) => o.label === selectedOS)?.icon}
+            className="w-4 h-4 shrink-0"
+          />
+          <span>{selectedOS}</span>
+        </div>
+        {#if isOpen}
+          <ChevronUp class="w-4 h-4 shrink-0" />{:else}
+          <ChevronDown class="w-4 h-4 shrink-0" />
+        {/if}
+      </button>
+    </div>
 
     <!-- dropdown panel -->
     {#if isOpen}
       <ul
-        class="rainbow z-50 mt-2 w-full bg-black text-white rounded-lg overflow-y-auto max-h-32"
+        class="z-50 mt-2 w-full bg-black text-white rounded-lg overflow-y-auto overflow-x-none max-h-32"
         transition:slide={{ duration: 200 }}
       >
         {#each options as option}
@@ -148,21 +132,18 @@
 </div>
 
 <style>
-  .rainbow {
-    position: relative;
-    --angle: 10deg;
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
   }
 
-  .rainbow::before,
-  .rainbow::after {
+  .rainbow::after,
+  .rainbow::before {
     content: '';
     position: absolute;
-    width: calc(100% + 5px);
     height: calc(100% + 5px);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 12px;
+    width: calc(100% + 5px);
     background-image: conic-gradient(
       from var(--angle),
       #ff4545,
@@ -171,14 +152,26 @@
       #ff0095,
       #ff4545
     );
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
     z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
   }
-
   .rainbow::before {
     filter: blur(4rem);
     opacity: 0.7;
   }
-
+  @keyframes spin {
+    from {
+      --angle: 0deg;
+    }
+    to {
+      --angle: 360deg;
+    }
+  }
   button {
     border: none;
     appearance: none;

@@ -1,38 +1,38 @@
 <script lang="ts">
   import { Info } from 'lucide-svelte';
   import { onMount } from 'svelte';
-  import { fade, scale, slide } from 'svelte/transition';
+  import { crossfade, fade, scale, slide } from 'svelte/transition';
 
   let angle = 0;
   let animationFrame: number;
 
-  onMount(() => {
-    const update = () => {
-      angle = (angle + 1) % 360;
-      const rainbows = document.querySelectorAll<HTMLElement>('.rainbow');
-      console.log(
-        `[gradient] frame: angle=${angle}°, found ${rainbows.length} .rainbow elements`
-      );
+  // onMount(() => {
+  //   const update = () => {
+  //     angle = (angle + 1) % 360;
+  //     const rainbows = document.querySelectorAll<HTMLElement>('.rainbow');
+  //     console.log(
+  //       `[gradient] frame: angle=${angle}°, found ${rainbows.length} .rainbow elements`
+  //     );
 
-      rainbows.forEach((el, _idx) => {
-        el.style.setProperty('--angle', `${angle}deg`);
-        const applied = getComputedStyle(el).getPropertyValue('--angle').trim();
-      });
+  //     rainbows.forEach((el, _idx) => {
+  //       el.style.setProperty('--angle', `${angle}deg`);
+  //       const applied = getComputedStyle(el).getPropertyValue('--angle').trim();
+  //     });
 
-      animationFrame = requestAnimationFrame(update);
-    };
+  //     animationFrame = requestAnimationFrame(update);
+  //   };
 
-    update();
+  //   update();
 
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  });
+  //   return () => {
+  //     cancelAnimationFrame(animationFrame);
+  //   };
+  // });
 </script>
 
 <div
   class="w-full h-full flex flex-col justify-center items-center z-20 gap-4 relative"
-  in:scale
+  in:fade={{ duration: 150 }}
   out:fade={{ duration: 0 }}
 >
   <div
@@ -66,21 +66,18 @@
 </div>
 
 <style>
-  .rainbow {
-    position: relative;
-    --angle: 10deg;
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
   }
 
-  .rainbow::before,
-  .rainbow::after {
+  .rainbow::after,
+  .rainbow::before {
     content: '';
     position: absolute;
-    width: calc(100% + 5px);
     height: calc(100% + 5px);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 12px;
+    width: calc(100% + 5px);
     background-image: conic-gradient(
       from var(--angle),
       #ff4545,
@@ -89,11 +86,24 @@
       #ff0095,
       #ff4545
     );
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
     z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
   }
-
   .rainbow::before {
     filter: blur(4rem);
     opacity: 0.7;
+  }
+  @keyframes spin {
+    from {
+      --angle: 0deg;
+    }
+    to {
+      --angle: 360deg;
+    }
   }
 </style>
