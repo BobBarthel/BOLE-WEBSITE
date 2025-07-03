@@ -61,14 +61,14 @@
 </script>
 
 <div
-  class="w-full h-full flex flex-col justify-center items-center z-20 gap-4 relative"
+  class="w-full justify-center flex flex-col items-center z-10 gap-4 relative"
   in:fade={{ duration: 150 }}
   out:fade={{ duration: 0 }}
 >
   <a
     href={downloadUrl}
     download
-    class="relative p-8 bg-black rounded-lg rainbow w-80 text-white flex flex-col"
+    class="relative p-8 bg-black rounded-lg rainbow w-[70%] sm:w-[40%] text-white flex flex-col"
   >
     <div class="absolute top-4 right-4 text-xs text-gray-300 font-mono">
       alpha-v0.0.1
@@ -84,11 +84,13 @@
   </a>
 
   <!-- custom dropdown -->
-  <div class="rainbow relative w-80">
+  <div
+    class="relative p-8 bg-black rounded-lg rainbow w-[70%] sm:w-[40%] text-white flex flex-col"
+  >
     <!-- trigger button -->
     <div class="">
       <button
-        class="w-full bg-black text-white p-5 rounded-lg flex items-center gap-2 justify-between"
+        class="w-full bg-black text-white rounded-lg flex items-center gap-2 justify-between"
         onclick={() => (isOpen = !isOpen)}
       >
         <div class="flex items-center gap-2">
@@ -108,7 +110,7 @@
     <!-- dropdown panel -->
     {#if isOpen}
       <ul
-        class="z-50 mt-2 w-full bg-black text-white rounded-lg overflow-y-auto overflow-x-none max-h-32 scrollable"
+        class="z-11 mt-2 w-full bg-black text-white rounded-lg overflow-y-auto overflow-x-none max-h-32 scrollable"
         transition:slide={{ duration: 200 }}
       >
         {#each options as option}

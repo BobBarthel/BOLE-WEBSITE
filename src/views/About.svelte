@@ -5,38 +5,15 @@
 
   let angle = 0;
   let animationFrame: number;
-
-  // onMount(() => {
-  //   const update = () => {
-  //     angle = (angle + 1) % 360;
-  //     const rainbows = document.querySelectorAll<HTMLElement>('.rainbow');
-  //     console.log(
-  //       `[gradient] frame: angle=${angle}°, found ${rainbows.length} .rainbow elements`
-  //     );
-
-  //     rainbows.forEach((el, _idx) => {
-  //       el.style.setProperty('--angle', `${angle}deg`);
-  //       const applied = getComputedStyle(el).getPropertyValue('--angle').trim();
-  //     });
-
-  //     animationFrame = requestAnimationFrame(update);
-  //   };
-
-  //   update();
-
-  //   return () => {
-  //     cancelAnimationFrame(animationFrame);
-  //   };
-  // });
 </script>
 
 <div
-  class="w-full h-full flex flex-col justify-center items-center z-20 gap-4 relative"
+  class="w-full justify-center flex z-10 gap-4 relative"
   in:fade={{ duration: 150 }}
   out:fade={{ duration: 0 }}
 >
   <div
-    class="relative p-8 bg-black rounded-lg rainbow w-80 sm:w-100 text-white flex flex-col"
+    class="relative p-8 bg-black rounded-lg rainbow w-[90%] sm:w-[60%] text-white flex flex-col"
     role="region"
     aria-labelledby="about-title"
   >
