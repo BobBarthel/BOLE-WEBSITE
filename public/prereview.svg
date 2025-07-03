@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="414px" height="414px" viewBox="0 0 414 414" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <defs>
+        <linearGradient x1="0%" y1="-5.89805982e-15%" x2="92.1788757%" y2="91.1285152%" id="linearGradient-1">
+            <stop stop-color="#FFF1C5" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="11.175153%"></stop>
+            <stop stop-color="#FFF7EB" offset="30.0257597%"></stop>
+            <stop stop-color="#FFDCBE" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-2.3%" y="-8.2%" width="103.5%" height="112.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="-4" dy="-4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <polygon id="path-3" points="16.3918945 96.9886176 29.9965122 96.9886176 46.3884068 123.011382 4.8609061e-13 123.011382"></polygon>
+        <filter x="-8.6%" y="-15.4%" width="117.2%" height="130.7%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="2" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="-4" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.25 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <path d="M230.736006,0.00341790452 L772.840386,10.1617585 C783.421949,10.3600434 792,18.2864481 792,27.8658789 L792,192.134121 C792,201.713552 783.421949,209.639957 772.840386,209.838242 L230.736006,219.996582 C220.154443,220.194867 211.576392,211.7409 211.576392,201.114118 L211.576392,18.8858821 C211.576392,8.25910016 220.154443,-0.194867006 230.736006,0.00341790452 Z" id="path-5"></path>
+        <filter x="-0.5%" y="-1.4%" width="101.0%" height="102.7%" filterUnits="objectBoundingBox" id="filter-6">
+            <feGaussianBlur stdDeviation="1" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="-4" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.25 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <path d="M214.969961,8.04774206 L214.971208,211.904188 L214.978961,211.915742 L214.970665,211.904188 L214.970665,211.84302 C175.809271,154.889225 128.046748,126.412274 71.6830964,126.412274 L29.0929615,126.411742 L29.0929615,93.8487421 L71.6541879,93.8491629 C127.854702,93.8491629 175.505563,65.4204243 214.606771,8.56294719 L214.969961,8.04774206 Z" id="path-7"></path>
+        <filter x="-2.2%" y="-2.0%" width="104.3%" height="103.9%" filterUnits="objectBoundingBox" id="filter-8">
+            <feGaussianBlur stdDeviation="2" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="-4" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.25 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="1️⃣-Step-1---Place-Your-Icons-Here" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="x-/-Icons-/-macOS" transform="translate(-49, -49)">
+            <g id="Group" transform="translate(0, -0)">
+                <g fill="url(#linearGradient-1)" id="Rectangle" stroke="#FFFFFF">
+                    <rect x="0.5" y="0.5" width="511" height="511"></rect>
+                </g>
+                <g filter="url(#filter-2)" transform="translate(407, 105) scale(-1, 1) rotate(-135) translate(-407, -105)translate(11, -5)">
+                    <g id="Rectangle-3">
+                        <use fill="#FF9F0A" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    </g>
+                    <g id="Rectangle-2">
+                        <use fill="#FF9F0A" fill-rule="evenodd" xlink:href="#path-5"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                    </g>
+                    <g id="Combined-Shape">
+                        <use fill="#3A3A3C" fill-rule="evenodd" xlink:href="#path-7"></use>
+                        <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
+                    </g>
+                </g>
+                <path d="M121.913414,394.214722 C92.4290478,422.427299 91.0530026,436.533588 117.785278,436.533588 C157.883691,436.533588 292.412528,360.567541 346.367944,394.214722 C382.338221,416.646176 390.491484,450.403277 370.827732,495.486024 L433.374201,478.220291" id="Path-2" stroke="#FF9500" stroke-width="20"></path>
+                <text id="030" fill-rule="nonzero" transform="translate(356.9853, 150.9584) rotate(-45) translate(-356.9853, -150.9584)" font-family="Helvetica-Bold, Helvetica" font-size="100" font-weight="bold" fill="#3A3A3C">
+                    <tspan x="273.485281" y="187.958369">030</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
