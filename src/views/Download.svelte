@@ -108,7 +108,7 @@
     <!-- dropdown panel -->
     {#if isOpen}
       <ul
-        class="z-50 mt-2 w-full bg-black text-white rounded-lg overflow-y-auto overflow-x-none max-h-32"
+        class="z-50 mt-2 w-full bg-black text-white rounded-lg overflow-y-auto overflow-x-none max-h-32 scrollable"
         transition:slide={{ duration: 200 }}
       >
         {#each options as option}
@@ -180,5 +180,36 @@
 
   li {
     list-style: none;
+  }
+
+  /* Apply to the scrollable element (e.g., your <ul>) */
+  .scrollable {
+    /* Hide scrollbar by default */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  /* Show scrollbar only when scrolling (WebKit browsers) */
+  .scrollable:hover,
+  .scrollable:active {
+    scrollbar-width: thin; /* Firefox */
+    -ms-overflow-style: auto; /* IE/Edge */
+  }
+
+  /* WebKit browsers (Chrome, Safari, Edge) */
+  .scrollable::-webkit-scrollbar {
+    width: 8px; /* Thin scrollbar */
+    height: 8px;
+  }
+
+  /* Hide track */
+  .scrollable::-webkit-scrollbar-track {
+    background: transparent; /* No visible track */
+  }
+
+  /* White thumb with lower opacity */
+  .scrollable::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3); /* White with 30% opacity */
+    border-radius: 4px; /* Rounded edges */
   }
 </style>
