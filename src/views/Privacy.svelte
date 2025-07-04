@@ -17,7 +17,7 @@
 </script>
 
 <div
-  class="w-full justify-center flex z-10 gap-4 relative"
+  class="w-full justify-center flex z-10 gap-4 relative mb-20"
   in:fade={{ duration: 150 }}
   out:fade={{ duration: 0 }}
 >
@@ -34,7 +34,7 @@
     <p class="text-sm text-gray-300 mb-4">
       At BOLE BERLIN, we value your privacy. This policy explains how we handle
       your data in the <b>Pre-Review</b> app and on our website, in compliance with
-      GDPR and German data protection laws. Last updated: July 3, 2025.
+      GDPR and German data protection laws. Last updated: July 4, 2025.
     </p>
 
     <h2 class="text-lg font-semibold mb-2">1. Who We Are</h2>
@@ -117,7 +117,21 @@
       involve technical data collection (see their privacy policy).
     </p>
 
-    <h2 class="text-lg font-semibold mb-2">9. Updates</h2>
+    <h2 class="text-lg font-semibold mb-2">9. Local Storage</h2>
+    <p class="text-sm text-gray-300 mb-4">
+      Our Electron app uses localStorage to store user settings, account
+      information (e.g., login credentials or preferences), and content directly
+      on your device. This ensures a seamless and personalized experience
+      without relying on constant server communication. A portion of this data,
+      such as user preferences, may be securely transmitted to our servers for
+      backup purposes, allowing you to restore your settings if you switch
+      devices or reinstall the app. We do not share this data with third
+      parties. You can clear locally stored data at any time by resetting the
+      app or clearing its local storage via your device settings. Upon account
+      deletion, all associated backups are permanently removed from our servers.
+    </p>
+
+    <h2 class="text-lg font-semibold mb-2">10. Updates</h2>
     <p class="text-sm text-gray-300">
       We may update this policy. Changes will be posted here, with significant
       updates notified via email or in the app.
