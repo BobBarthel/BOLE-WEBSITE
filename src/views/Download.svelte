@@ -1,30 +1,22 @@
 <script lang="ts">
-  import { Download, ChevronDown, ChevronUp } from 'lucide-svelte';
+  import { Download, ChevronDown, ChevronUp, HeartCrack } from 'lucide-svelte';
   import WindowsIcon from '../icons/WindowsIcon.svelte';
   import AppleIcon from '../icons/AppleIcon.svelte';
   import LinuxIcon from '../icons/LinuxIcon.svelte';
   import { onMount } from 'svelte';
   import { crossfade, fade, scale, slide } from 'svelte/transition';
 
-  type OSOption =
-    | 'Windows'
-    | 'Mac (M Series)'
-    | 'Mac (Intel)'
-    | 'Linux (x64)'
-    | 'Linux (x86)'
-    | 'Linux (arm64)';
+  type OSOption = 'Windows (x64)' | 'Mac (M Series)' | 'Mac (Intel)' | 'Other';
 
   let selectedOS: OSOption;
   let downloadUrl: string;
   let isOpen = false;
 
   const options = [
-    { label: 'Windows', icon: WindowsIcon },
+    { label: 'Windows (x64)', icon: WindowsIcon },
     { label: 'Mac (M Series)', icon: AppleIcon },
     { label: 'Mac (Intel)', icon: AppleIcon },
-    { label: 'Linux (x64)', icon: LinuxIcon },
-    { label: 'Linux (x86)', icon: LinuxIcon },
-    { label: 'Linux (arm64)', icon: LinuxIcon },
+    { label: 'Other', icon: LinuxIcon },
   ] as const;
 
   function selectOption(o: (typeof options)[number]) {
@@ -33,12 +25,10 @@
   }
 
   const urlMap: Record<OSOption, string> = {
-    Windows: '/testWindows.txt',
-    'Mac (M Series)': '/testMac.txt',
-    'Mac (Intel)': '/testMac.txt',
-    'Linux (x64)': '/testLinux.txt',
-    'Linux (x86)': '/testLinux.txt',
-    'Linux (arm64)': '/testLinux.txt',
+    'Windows (x64)': '/Pre-Review-Setup-0.0.4-x64.exe',
+    'Mac (M Series)': '/Pre-Review-0.0.4-arm64.dmg',
+    'Mac (Intel)': '/Pre-Review-0.0.4-x64.dmg',
+    Other: '',
   };
 
   let angle = 0;
@@ -47,13 +37,11 @@
   onMount(() => {
     const ua = navigator.userAgent;
     if (ua.includes('Win')) {
-      selectedOS = 'Windows';
+      selectedOS = 'Windows (x64)';
     } else if (ua.includes('Mac')) {
       selectedOS = 'Mac (M Series)';
-    } else if (ua.includes('Linux')) {
-      selectedOS = 'Linux (x64)';
     } else {
-      selectedOS = 'Windows';
+      selectedOS = 'Windows (x64)'; // Default to Windows if not detected
     }
   });
 
@@ -65,23 +53,44 @@
   in:fade={{ duration: 150 }}
   out:fade={{ duration: 0 }}
 >
-  <a
-    href={downloadUrl}
-    download
-    class="relative p-8 bg-black rounded-lg rainbow w-[70%] sm:w-[40%] text-white flex flex-col"
-  >
-    <div class="absolute top-4 right-4 text-xs text-gray-300 font-mono">
-      alpha-v0.0.1
-    </div>
-    <div class="flex items-center mb-2">
-      <Download size={20} class="mr-2" />
-      <span class="text-sm font-semibold">Download</span>
-    </div>
-    <span class="text-4xl font-bold mb-2">Pre‑Review</span>
-    <span class="text-sm text-gray-300"
-      >Discover a smarter, faster way to correct student reports.</span
+  {#if selectedOS === 'Other'}
+    <a
+      href="mailto:bob@bole.berlin?subject=OS%20or%20arch%20request:"
+      download
+      class="relative p-8 bg-black rounded-lg rainbow w-[70%] sm:w-[40%] text-white flex flex-col"
     >
-  </a>
+      <div class="absolute top-4 right-4 text-xs text-gray-300 font-mono">
+        alpha-v0.0.4
+      </div>
+      <div class="flex items-center mb-2">
+        <HeartCrack size={20} class="mr-2" />
+        <span class="text-sm font-semibold">Unavailable</span>
+      </div>
+      <span class="text-4xl font-bold mb-2">Pre‑Review</span>
+      <span class="text-sm text-gray-300"
+        >Click here to send us an email requesting a specific architecture or
+        operating system. We will be happy to help you.</span
+      >
+    </a>
+  {:else}
+    <a
+      href={downloadUrl}
+      download
+      class="relative p-8 bg-black rounded-lg rainbow w-[70%] sm:w-[40%] text-white flex flex-col"
+    >
+      <div class="absolute top-4 right-4 text-xs text-gray-300 font-mono">
+        alpha-v0.0.4
+      </div>
+      <div class="flex items-center mb-2">
+        <Download size={20} class="mr-2" />
+        <span class="text-sm font-semibold">Download</span>
+      </div>
+      <span class="text-4xl font-bold mb-2">Pre‑Review</span>
+      <span class="text-sm text-gray-300"
+        >Discover a smarter, faster way to correct student reports.</span
+      >
+    </a>
+  {/if}
 
   <!-- custom dropdown -->
   <div
